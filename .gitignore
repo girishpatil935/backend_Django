@@ -1,7 +1,6 @@
 # Python
 __pycache__/
 *.py[cod]
-*.sqlite3
 
 # Virtual Environment
 venv/
@@ -10,21 +9,17 @@ env/
 # Django
 db.sqlite3
 media/
-
-# VS Code
-.vscode/
+staticfiles/
 
 # Environment Variables
 .env
 
-# Staticfiles
-staticfiles/
+# VS Code
+.vscode/
 
-# Migrations cache
+# Logs
 *.log
 
-# Mac/Linux
+# OS
 .DS_Store
-
-# Windows
 Thumbs.db
