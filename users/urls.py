@@ -1,0 +1,13 @@
+from django.urls import path
+from . import views 
+
+urlpatterns = [
+    path('',views.home),
+    path('skills/',views.skills_list,name="skills"),
+    path('delete/<int:id>/', views.delete_skill, name="delete_skill"),
+    path('edit/<int:id>/', views.edit_skill, name="edit_skill"),
+    path('user-skills/',views.user_skills),
+    path('search/',views.search_skills,name="search_skills"),
+    path('api/skills/', views.skills_api, name='skills_api'),
+    path('api/skills/<int:id>/', views.skill_detail_api, name='skill_detail_api'),
+]

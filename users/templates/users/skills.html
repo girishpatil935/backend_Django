@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<h1>My Skills</h1>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form }}
+
+    <button type="submit">
+        Add Skill
+    </button>
+
+</form>
+
+<ul>
+
+    {% for skill in skills %}
+
+        <li>
+
+            {{ skill.name }}
+            - {{ skill.user.name }}
+
+            <a href="{% url 'edit_skill' skill.id %}">
+                Edit
+            </a>
+
+            <a href="{% url 'delete_skill' skill.id %}">
+                Delete
+            </a>
+
+        </li>
+
+    {% empty %}
+
+        <li>No skills yet.</li>
+
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

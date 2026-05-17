@@ -1,0 +1,37 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<h1>Search Skills</h1>
+
+<form method="GET">
+
+    <input type="text"
+           name="q"
+           value="{{ query }}"
+           placeholder="Search skill">
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+<ul>
+
+    {% for skill in skills %}
+
+        <li>
+            {{ skill.name }}
+            - {{ skill.user.name }}
+        </li>
+
+    {% empty %}
+
+        <li>No skills found.</li>
+
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

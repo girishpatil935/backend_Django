@@ -1,0 +1,15 @@
+<h1>Edit Skill</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input 
+        type="text"
+        name="skill"
+        value="{{ skill.name }}"
+    >
+
+    <button type="submit">
+        Update Skill
+    </button>
+</form>

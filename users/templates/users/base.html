@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Django Backend Journey</title>
+
+    <link rel="stylesheet"
+          href="{% static 'users/style.css' %}">
+</head>
+
+<body>
+
+    <nav>
+        <a href="{% url 'skills' %}">
+            Skills
+        </a>
+
+        <a href="{% url 'search_skills' %}">
+            Search
+        </a>
+
+        <a href="/user-skills/">
+            User Skills
+        </a>
+    </nav>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

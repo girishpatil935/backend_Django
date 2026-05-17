@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Virtual Environment
+venv/
+env/
+
+# Django
+db.sqlite3
+media/
+
+# VS Code
+.vscode/
+
+# Environment Variables
+.env
+
+# Staticfiles
+staticfiles/
+
+# Migrations cache
+*.log
+
+# Mac/Linux
+.DS_Store
+
+# Windows
+Thumbs.db

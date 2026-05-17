@@ -1,0 +1,114 @@
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import Skill , UserProfile
+from .forms import SkillForm
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import SkillSerializer
+
+@api_view(['GET', 'POST'])
+def skills_api(request):
+
+    if request.method == 'GET':
+        skills = Skill.objects.all()
+        serializer = SkillSerializer(skills, many=True)
+        return Response(serializer.data)
+
+    if request.method == 'POST':
+        serializer = SkillSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def skill_detail_api(request, id):
+
+    skill = Skill.objects.get(id=id)
+
+    if request.method == 'GET':
+        serializer = SkillSerializer(skill)
+        return Response(serializer.data)
+
+    if request.method == 'PUT':
+        serializer = SkillSerializer(skill, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors)
+
+    if request.method == 'DELETE':
+        skill.delete()
+        return Response({"message": "Skill deleted successfully"})
+
+
+def home(request):
+    return render(request, 'users/home.html')
+
+def skills_list(request):
+   skills = Skill.objects.all()
+
+   form = SkillForm()
+
+   if request.method == "POST":
+
+        form = SkillForm(request.POST)
+
+        if form.is_valid():
+
+           form.save()
+
+           return redirect("skills")
+
+   return render(request, 'users/skills.html', {
+        'skills': skills,
+        'form': form
+    })
+def delete_skill(request, id):
+    skill = Skill.objects.get(id=id)
+    skill.delete()
+    return redirect("skills")
+def edit_skill(request, id):
+
+    skill = Skill.objects.get(id=id)
+
+    if request.method == "POST":
+        new_name = request.POST.get("skill")
+
+        if new_name:
+            skill.name = new_name
+            skill.save()
+
+        return redirect("skills")
+
+    return render(request, 'edit_skill.html', {
+        'skill': skill
+    })
+
+
+def user_skills(request):
+
+    user = UserProfile.objects.get(name="Girish")
+
+    skills = user.skills.all()
+
+    return render(request, 'users/user_skills.html', {
+        'user': user,
+        'skills': skills
+    })
+def search_skills(request):
+    query = request.GET.get("q")
+
+    if query:
+        skills = Skill.objects.filter(name__icontains=query)
+    else:
+        skills = Skill.objects.all()
+
+    return render(request, "users/search_skills.html", {
+        "skills": skills,
+        "query": query
+    })
