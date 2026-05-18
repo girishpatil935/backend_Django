@@ -1,31 +1,50 @@
 body {
-    font-family: Arial;
-    background: #f4f4f4;
-    margin: 40px;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 40px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
 }
 
 nav {
     background: white;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-nav a {
-    margin-right: 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-form {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 15px 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
 }
 
-li {
+nav a {
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.card {
     background: white;
-    padding: 12px;
-    margin: 10px 0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px 16px;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+input {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+ul {
+    padding-left: 20px;
 }

@@ -10,4 +10,13 @@ urlpatterns = [
     path('search/',views.search_skills,name="search_skills"),
     path('api/skills/', views.skills_api, name='skills_api'),
     path('api/skills/<int:id>/', views.skill_detail_api, name='skill_detail_api'),
+    path(
+    'api/generic/skills/',
+    views.SkillListCreateAPIView.as_view(),
+),
+
+path(
+    'api/generic/skills/<int:id>/',
+    views.SkillDetailAPIView.as_view(),
+),
 ]

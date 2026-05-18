@@ -5,6 +5,31 @@ from .forms import SkillForm
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import SkillSerializer
+from rest_framework import generics
+
+class SkillListCreateAPIView(generics.ListCreateAPIView):
+
+    serializer_class = SkillSerializer
+
+    def get_queryset(self):
+        queryset = Skill.objects.all()
+
+        search = self.request.query_params.get('search')
+
+        if search:
+            queryset = queryset.filter(name__icontains=search)
+
+        return queryset
+    
+class SkillDetailAPIView(
+    generics.RetrieveUpdateDestroyAPIView
+):
+
+    queryset = Skill.objects.all()
+
+    serializer_class = SkillSerializer
+
+    lookup_field = 'id'
 
 @api_view(['GET', 'POST'])
 def skills_api(request):
