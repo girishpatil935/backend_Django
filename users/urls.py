@@ -1,5 +1,14 @@
 from django.urls import path
 from . import views 
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
+router.register(
+    'api/viewset/skills',
+    views.SkillViewSet,
+    basename='skill-viewset'
+)
 
 urlpatterns = [
     path('',views.home),
@@ -19,4 +28,4 @@ path(
     'api/generic/skills/<int:id>/',
     views.SkillDetailAPIView.as_view(),
 ),
-]
+] + router.urls
