@@ -9,6 +9,11 @@ router.register(
     views.SkillViewSet,
     basename='skill-viewset'
 )
+router.register(
+    'api/viewset/books',
+    views.BookViewset,
+    basename='book-viewset'
+)
 
 urlpatterns = [
     path('',views.home),

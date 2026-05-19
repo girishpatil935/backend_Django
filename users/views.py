@@ -7,12 +7,20 @@ from rest_framework.response import Response
 from .serializers import SkillSerializer
 from rest_framework import generics
 from rest_framework import viewsets
+from .serializers import BookSerializer
+from.models import Book
 
 class SkillViewSet(viewsets.ModelViewSet):
 
     queryset = Skill.objects.all()
 
     serializer_class = SkillSerializer
+
+class BookViewset(viewsets.ModelViewSet):
+
+    queryset = Book.objects.all()
+
+    serializer_class = BookSerializer
 
 class SkillListCreateAPIView(generics.ListCreateAPIView):
 
