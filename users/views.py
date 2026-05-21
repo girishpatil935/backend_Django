@@ -9,6 +9,7 @@ from rest_framework import generics
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from .serializers import RegisterSerializer
+from rest_framework.permissions import IsAuthenticated
 
 class RegisterAPIView(
     generics.CreateAPIView
@@ -23,6 +24,13 @@ class SkillViewSet(viewsets.ModelViewSet):
     queryset = Skill.objects.all()
 
     serializer_class = SkillSerializer
+
+    permission_classes = [IsAuthenticated]
+    def get_queryset(self):
+        return Skill.objects.filter(user=self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class SkillListCreateAPIView(generics.ListCreateAPIView):
 

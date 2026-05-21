@@ -24,7 +24,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
-        fields = ['id', 'name', 'user']
+        fields = ['id', 'name']
 
 def validate_name(self, value):
 
