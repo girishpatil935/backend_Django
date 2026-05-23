@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Skill
 from django.contrib.auth.models import User
+from .models import Task
 
 class RegisterSerializer(serializers.ModelSerializer):
 
@@ -39,3 +40,7 @@ def validate_name(self, value):
         )
 
     return value
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = ['id', 'title', 'is_completed']

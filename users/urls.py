@@ -10,6 +10,11 @@ router.register(
     views.SkillViewSet,
     basename='skill-viewset'
 )
+router.register(
+    'api/tasks',
+    views.TaskViewSet,
+    basename='tasks'
+)
 
 urlpatterns = [
     path('',views.home),
