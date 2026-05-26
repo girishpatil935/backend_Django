@@ -13,11 +13,16 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Task
 from .serializers import TaskSerializer
 from .permissions import IsOwner
+from rest_framework import filters
 
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
 
     permission_classes = [IsAuthenticated, IsOwner]
+
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['title']
+    ordering_fields = ['id', 'title']
 
     def get_queryset(self):
         return Task.objects.filter(user=self.request.user)
