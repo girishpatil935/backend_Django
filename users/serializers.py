@@ -43,4 +43,4 @@ def validate_name(self, value):
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ['id', 'title', 'is_completed']
+        fields = ['id', 'title', 'is_completed','attachment']

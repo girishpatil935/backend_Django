@@ -25,5 +25,10 @@ class Task(models.Model):
     )
     title = models.CharField(max_length=100)
     is_completed = models.BooleanField(default=False)
+    attachment = models.FileField(
+        upload_to='task_files/',
+        blank=True,
+        null=True
+    )
     def __str__(self):
         return self.title
