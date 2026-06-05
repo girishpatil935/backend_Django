@@ -2,8 +2,10 @@ FROM python:3.14
 
 WORKDIR /app
 
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
 COPY . .
 
-RUN echo "Docker Build Successful"
-
-CMD ["python", "--version"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
