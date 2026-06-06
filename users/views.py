@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Task
 from .serializers import TaskSerializer
 from .permissions import IsOwner
-from rest_framework import filters
+from rest_framework import filters 
 
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
