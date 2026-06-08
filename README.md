@@ -19,7 +19,7 @@ A hands-on Django backend development project built while learning Django and Dj
 ## Live Demo
 
 Base URL:
-https://backend-django-qlb3.onrender.com/
+https://backend-django-qlb3.onrender.com/api/tasks/
 
 ## Available Endpoints
 
